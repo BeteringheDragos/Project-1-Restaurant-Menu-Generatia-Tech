@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <title>Restaurant</title>
+</head>
+<body>
+
+
+    <div class="container">
+        
+        <h1 class="h1 mb-4">Restaurant</h1>
+        <h2 class="mb-4">Meniu Articles</h2>
+        <a href="/menu-articles/new" class="btn btn-success">New menu article</a>
+
+
+        <% articles.forEach(article => { %>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title"><%= article.title %></h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        <%= article.createdAt.toLocaleDateString() %>
+                    </div>
+                    <div class="card-text mb-2">
+                        <%= article.description %>
+                        <div>
+                            <a href="menu-articles/<%= article.slug %>" class="btn btn-primary">Read more</a>
+                            <a href="menu-articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+                            <form action="/menu-articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <% }) %>
+
+  
+    </div>
+
+
+
+
+
+
+</body>
+</html>
